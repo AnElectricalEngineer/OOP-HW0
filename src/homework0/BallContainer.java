@@ -7,6 +7,7 @@ package homework0;
 public class BallContainer {
 
     /**
+	 * @requires containerSize > 0
      * @effects Creates a new BallContainer with the size of containerSize.
      */
     public BallContainer(double containerSize) {
