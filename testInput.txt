@@ -1,0 +1,11 @@
+//Test comment one
+
+dont PRINT This;
+
+//Test comment 2/* PRINT THIS!*/
+
+/*Test comment 3*/ //Dont print this!
+
+/* Test
+
+//print this comment 4*/ 
