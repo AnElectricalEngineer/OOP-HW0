@@ -44,7 +44,7 @@ public class BallContainer2 { //change class name here and file name before
         }
 
         double volume = 0;
-        for(Ball i : ballList)
+        for(Ball i : ballList) //maybe use getVolume() method
         {
             volume += i.getVolume();
         }
