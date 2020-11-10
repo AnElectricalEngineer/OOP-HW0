@@ -1,110 +1,111 @@
-/*
 package homework0;
 
-*/
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * A container that can be used to contain Balls. A given Ball may only
  * appear in a BallContainer once. Each container has a size, and can only contain balls up to the size of the container.
- *//*
-
+ */
 public class BallContainer {
 
-    */
-/**
+	private static final int empty = 0;
+
+	private double volume;	//total volume of all Balls in container
+	private final double containerSize; //volume of container itself
+	private int size;	//the number of Balls in the container
+	private List<Ball>  ballList;
+	/**
 	 * @requires containerSize > 0
-     * @effects Creates a new BallContainer with the size of containerSize.
-     *//*
+	 * @effects Creates a new BallContainer with the size of containerSize.
+	 */
+	public BallContainer(double containerSize) {
+		this.volume = empty;
+		this.containerSize = containerSize;
+		this.size = empty;
+		ballList = new ArrayList<>(); //default size is 10
+	}
 
-    public BallContainer(double containerSize) {
-		//TODO: Add your code here
-		
-    }
 
-
-    */
-/**
-     * @modifies this
-     * @effects Adds ball to the container.
-     * @return true if ball was successfully added to the container,
-     * 		   i.e. ball is not already in the container and if adding ball does not cause 
+	/**
+	 * @modifies this
+	 * @effects Adds ball to the container.
+	 * @return true if ball was successfully added to the container,
+	 * 		   i.e. ball is not already in the container and if adding ball does not cause
 	 *		   the total volume of the balls in the container to exceed the size of	the container;
 	 * 		   false otherwise.
-     *//*
-
-    public boolean add(Ball ball) {
-		// TODO: Add your code here
-		
-    }
-
-
-    */
-/**
-     * @modifies this
-     * @effects Removes ball from the container.
-     * @return true if ball was successfully removed from the container,
-     * 		   i.e. ball is actually in the container; false otherwise.
-     *//*
-
-    public boolean remove(Ball ball) {
-		// TODO: Add your code here
-		
-    }
+	 */
+	public boolean add(Ball ball) {
+		if((!ballList.contains(ball)) &&
+				(volume + ball.getVolume() <= containerSize))
+		{
+			ballList.add(ball);
+			volume += ball.getVolume();
+			size =+ 1;
+			return true;
+		}
+		return false;
+	}
 
 
-    */
-/**
-     * @return the volume of the contents of the container, i.e. the
-     * 		   total volume of all Balls in the container.
-     *//*
-
-    public double getVolume() {
-		// TODO: Add your code here
-		
-    }
-	
-	*/
-/**
-     * @return the size of the container.
-     *//*
-
-    public double getContainerSize() {
-		// TODO: Add your code here
-		
-    }
+	/**
+	 * @modifies this
+	 * @effects Removes ball from the container.
+	 * @return true if ball was successfully removed from the container,
+	 * 		   i.e. ball is actually in the container; false otherwise.
+	 */
+	public boolean remove(Ball ball) {
+		// remove(Object o) returns true if the object exists in the list
+		boolean removed = ballList.remove(ball);
+		if(removed)
+		{
+			volume -= ball.getVolume();
+			size -= 1;
+		}
+		return removed;
+	}
 
 
-    */
-/**
-     * @return the number of Balls in the container.
-     *//*
+	/**
+	 * @return the volume of the contents of the container, i.e. the
+	 * 		   total volume of all Balls in the container.
+	 */
+	public double getVolume() {
+		return volume;
+	}
 
-    public int size() {
-		// TODO: Add your code here
-		
-    }
-
-
-    */
-/**
-     * @modifies this
-     * @effects Empties the container, i.e., removes all its contents.
-     *//*
-
-    public void clear() {
-		// TODO: Add your code here
-		
-    }
+	/**
+	 * @return the size of the container.
+	 */
+	public double getContainerSize() {
+		return containerSize;
+	}
 
 
-    */
-/**
-     * @return true if this container contains ball; false, otherwise.
-     *//*
+	/**
+	 * @return the number of Balls in the container.
+	 */
+	public int size() {
+		return size;
+	}
 
-    public boolean contains(Ball ball) {
-		// TODO: Add your code here
-	
-    }
+
+	/**
+	 * @modifies this
+	 * @effects Empties the container, i.e., removes all its contents.
+	 */
+	public void clear() {
+		ballList.clear();
+		volume = empty;
+		size = empty;
+	}
+
+
+	/**
+	 * @return true if this container contains ball; false, otherwise.
+	 */
+	public boolean contains(Ball ball) {
+		return ballList.contains(ball);
+	}
 
 }
-*/
