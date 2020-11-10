@@ -6,6 +6,7 @@ public class BallContainerTester2
     {
         Ball smallBall1 = new Ball(10);
         Ball mediumBall1 = new Ball(20.3);
+        mediumBall1.setVolume(20.1);
         Ball largeBall1 = new Ball(50.75);
         Ball giantBall1 = new Ball(75);
 

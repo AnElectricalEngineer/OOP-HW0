@@ -43,7 +43,7 @@ public class BallContainer2 { //change class name here and file name before
             return false;
         }
 
-        int volume = empty;
+        double volume = 0;
         for(Ball i : ballList)
         {
             volume += i.getVolume();
@@ -81,7 +81,7 @@ public class BallContainer2 { //change class name here and file name before
      * 		   total volume of all Balls in the container.
      */
     public double getVolume() {
-        int volume = empty;
+        double volume = 0;
         for(Ball i : ballList)
         {
             volume += i.getVolume();
