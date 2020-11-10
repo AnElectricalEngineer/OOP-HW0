@@ -41,7 +41,7 @@ public class BallContainer {
 		{
 			ballList.add(ball);
 			volume += ball.getVolume();
-			size =+ 1;
+			size += 1;
 			return true;
 		}
 		return false;
