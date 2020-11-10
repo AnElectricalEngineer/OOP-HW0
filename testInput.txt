@@ -1,11 +1,10 @@
-//Test comment one
+/*test*/
 
-dont PRINT This;
+//Comment 1
+/* Comment 2 */
+// /* Comment 3
+/* //Comment 4 //*/
 
-//Test comment 2/* PRINT THIS!*/
-
-/*Test comment 3*/ //Dont print this!
-
-/* Test
-
-//print this comment 4*/ 
+/* comment
+5
+*/
