@@ -5,8 +5,11 @@ import java.util.List;
 
 /**
  * A container that can be used to contain Balls. A given Ball may only
- * appear in a BallContainer once. Each container has a size, and can only contain balls up to the size of the container.
+ * appear in a BallContainer once. Each container has a size, and can only
+ * contain balls up to the size of the container.
  */
+
+//BallContainer for Part A
 public class BallContainer {
 
 	private static final int empty = 0;

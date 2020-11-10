@@ -33,6 +33,5 @@ public class Ball {
 	 */
 	public double getVolume() {
 		return this.volume;
-
 	}
 }
