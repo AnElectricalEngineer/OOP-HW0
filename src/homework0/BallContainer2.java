@@ -13,7 +13,7 @@ import java.util.List;
 public class BallContainer2 { //change class name here and file name before
     // turning in!
 
-    private static final int empty = 0;
+    private static final int EMPTY = 0;
 
     private final double containerSize; //volume of container itself
     private int size;	//the number of Balls in the container
@@ -24,7 +24,7 @@ public class BallContainer2 { //change class name here and file name before
      */
     public BallContainer2(double containerSize) {
         this.containerSize = containerSize;
-        this.size = empty;
+        this.size = EMPTY;
         ballList = new ArrayList<>(); //default size is 10
     }
 
@@ -111,7 +111,7 @@ public class BallContainer2 { //change class name here and file name before
      */
     public void clear() {
         ballList.clear();
-        size = empty;
+        size = EMPTY;
     }
 
 

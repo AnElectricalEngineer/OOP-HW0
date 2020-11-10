@@ -11,7 +11,7 @@ public class CommentReader
 {
     private enum commentStartType
     {NONE, SINGLE_LINE, MULTI_LINE}
-
+    //change all static finals to caps + underscore
     private static final String lineComment = "//";
     private static final String multiLineCommentStart = "/*";
     private static final String multiLineCommentEnd = "*/";

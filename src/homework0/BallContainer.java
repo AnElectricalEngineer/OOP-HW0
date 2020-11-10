@@ -12,7 +12,7 @@ import java.util.List;
 //BallContainer for Part A
 public class BallContainer {
 
-	private static final int empty = 0;
+	private static final int EMPTY = 0;
 
 	private double volume;	//total volume of all Balls in container
 	private final double containerSize; //volume of container itself
@@ -23,9 +23,9 @@ public class BallContainer {
 	 * @effects Creates a new BallContainer with the size of containerSize.
 	 */
 	public BallContainer(double containerSize) {
-		this.volume = empty;
+		this.volume = EMPTY;
 		this.containerSize = containerSize;
-		this.size = empty;
+		this.size = EMPTY;
 		ballList = new ArrayList<>(); //default size is 10
 	}
 
@@ -99,8 +99,8 @@ public class BallContainer {
 	 */
 	public void clear() {
 		ballList.clear();
-		volume = empty;
-		size = empty;
+		volume = EMPTY;
+		size = EMPTY;
 	}
 
 
