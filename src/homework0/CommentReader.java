@@ -1,19 +1,20 @@
 package homework0;
 
-import java.io.*; //make more concrete later
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException; //maybe unnecessary - check main - throws
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-//import java.util.stringTokenizer;
 
 public class CommentReader
 {
+    private enum commentStartType{ NONE, SINGLE_LINE, MULTI_LINE}
     private static final String lineComment = "//";
     private static final String multiLineCommentStart = "/*";
     private static final String multiLineCommentEnd = "*/";
     private static final int notExists = -1;
     private static final int lengthOfCommentDelimiter = 2;
-    private enum commentStartType{ NONE, SINGLE_LINE, MULTI_LINE};
 
     public static void main(String[] args) throws IOException //check this
     // throws
@@ -62,74 +63,22 @@ public class CommentReader
                                 indexOfMultiLineCommentStart +
                                         lengthOfCommentDelimiter,
                                 indexOfMultiLineCommentEnd));
-                        continue;
                     }
                     else
                     {
                         System.out.println(currentLine.substring(
                                 indexOfMultiLineCommentStart +
                                         lengthOfCommentDelimiter));
-                        while (((currentLine = in.readLine()) != null) &&
+
+                        while(((currentLine = in.readLine()) != null) &&
                                 (!currentLine.contains(multiLineCommentEnd)))
                         {
-                            System.out.p
+                            System.out.println(currentLine);
                         }
+                        System.out.println(currentLine.substring(0,
+                                currentLine.indexOf(multiLineCommentEnd)));
                     }
                 }
-            /*    indexOfLineComment = currentLine.indexOf(lineComment);
-                indexOfMultiLineCommentStart =
-                        currentLine.indexOf(multiLineCommentStart);
-
-                //If there is a line comment and no multi-line comment beginning
-                if (((indexOfLineComment > notExists) &&
-                        (indexOfMultiLineCommentStart == notExists)))
-                {
-                    System.out.println(currentLine.substring(
-                            indexOfLineComment + lengthOfCommentDelimiter));
-                }
-
-                //If there is a multi-line comment beginning and no line comment
-                else if ((indexOfMultiLineCommentStart > notExists) &&
-                        (indexOfLineComment == notExists))
-                {
-                    indexOfMultiLineCommentEnd =
-                            currentLine.indexOf(multiLineCommentEnd);
-
-                    //If multi-line comment ends on same line that it begins
-                    if(indexOfMultiLineCommentEnd > notExists)
-                    {
-                        System.out.println(currentLine.substring(
-                                indexOfMultiLineCommentStart
-                                        + lengthOfCommentDelimiter,
-                                indexOfMultiLineCommentEnd));
-                    }
-                    else
-                    {
-                        //Print first line of multi-line comment
-                        System.out.println(currentLine.substring(
-                                indexOfMultiLineCommentStart
-                                        + lengthOfCommentDelimiter));
-
-                        while ((currentLine = in.readLine()) != null)
-                        {
-                            indexOfMultiLineCommentEnd =
-                                    currentLine.indexOf(multiLineCommentEnd);
-
-                            //print last line of multi-line comment
-                            if (indexOfMultiLineCommentEnd > -1)
-                            {
-                                System.out.println(currentLine.substring(0,
-                                        indexOfMultiLineCommentEnd));
-                            }
-
-                            //Print full comment lines
-                            else
-                            {
-                                System.out.println(currentLine);
-                            }
-                        }
-                    }
-                }*/
             }
         }
     }
