@@ -21,5 +21,13 @@ public class test1inCommentReader
         comment 11 test 2
         comment 11 test 3
         */
+
+        int x; /*comment 12*/
+
+        int z; /* comment 13 test 1
+        comment 13 test 2
+        comment 13 test 3*/
+
+        int y; // comment 14
     }
 }
