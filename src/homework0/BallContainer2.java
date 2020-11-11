@@ -10,8 +10,7 @@ import java.util.List;
  */
 
 //BallContainer for Part A
-public class BallContainer2 { //change class name here and file name before
-    // turning in!
+public class BallContainer2 {
 
     private static final int EMPTY = 0;
 
