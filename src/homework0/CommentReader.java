@@ -21,7 +21,7 @@ public class CommentReader
     public static void main(String[] args) throws IOException //check this
     // throws
     {
-        if (args.length != 1)    //checks number of input args
+        if (args.length != 1)    //checks for correct number of input arguments
         {
             System.out.println("Wrong number of parameters!");  //add this later
             // with exception maybe
@@ -29,7 +29,7 @@ public class CommentReader
         else
         {
             Path path = Paths.get(args[0]);
-            if (Files.notExists(path))   //check if filename exists
+            if (Files.notExists(path))   //check if filename is valid
             {
                 System.out.println("Doesn't exist!");
                 return;
@@ -76,15 +76,19 @@ public class CommentReader
 
                     else
                     {
+                        //print from /* to end of first line
                         System.out.println(currentLine.substring(
                                 indexOfMultiLineCommentStart +
                                         LENGTH_OF_COMMENT_DELIMITER));
 
+                        //print all lines in entirety except last line
                         while (((currentLine = in.readLine()) != null) &&
                                 (!currentLine.contains(MULTI_LINE_COMMENT_END)))
                         {
                             System.out.println(currentLine);
                         }
+
+                        //print last line until */
                         System.out.println(currentLine.substring(0,
                                 currentLine.indexOf(MULTI_LINE_COMMENT_END)));
                     }
@@ -102,7 +106,8 @@ public class CommentReader
                 line.indexOf(MULTI_LINE_COMMENT_START);
         if (indexOfLineComment == NOT_EXISTS) //not a single line comment
         {
-            if (indexOfMultiLineCommentStart == NOT_EXISTS) //not a comment at all
+            if (indexOfMultiLineCommentStart == NOT_EXISTS) //not a comment
+            // at all
             {
                 return commentStartType.NONE;
             }
