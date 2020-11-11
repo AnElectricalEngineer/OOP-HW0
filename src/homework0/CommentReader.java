@@ -7,6 +7,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+/**
+ * Comment reader is a program that reads a .java file and prints the comments
+ * to the console. The comments can be either line comments or block comments.
+ * If the .java file does not exist, or if invalid arguments are input, an
+ * error occurs.
+ */
+
 public class CommentReader
 {
     private enum commentStartType
@@ -23,18 +30,17 @@ public class CommentReader
     {
         if (args.length != 1)    //checks for correct number of input arguments
         {
-            System.out.println("Wrong number of parameters!");  //add this later
-            // with exception maybe
+            System.out.println("Error! Incorrect number of parameters.");
+            //add this later with exception maybe
         }
         else
         {
             Path path = Paths.get(args[0]);
             if (Files.notExists(path))   //check if filename is valid
             {
-                System.out.println("Doesn't exist!");
+                System.out.println("Error! File path does not exist.");
                 return;
             }
-            System.out.println("Exists!");
 
             BufferedReader in = new BufferedReader(new FileReader(args[0]));
 
@@ -97,8 +103,16 @@ public class CommentReader
         }
     }
 
-    //checks a line to see if it begins with a // or /*
-    //Returns NONE, SINGLE_LINE, MULTI_LINE.
+    /**
+     * Checks a line to see if it begins with a // or /*.
+     *
+     * @requires line != null
+     * @modifies none
+     * @effects returns NONE if the line does contain the beginning of a
+     * comment, SINGLE_LINE if it contains the beginning of a single-line
+     * comment, and MULTI_LINE if the line contains the start of a multi-line
+     * comment.
+     */
     private static commentStartType lineType(String line)
     {
         int indexOfLineComment = line.indexOf(LINE_COMMENT);
@@ -123,8 +137,10 @@ public class CommentReader
             {
                 return commentStartType.SINGLE_LINE;
             }
-            else    //line can be either single-line or multi-line comment,
-            //depending on what comes first: "//" or "/*"
+            /* line can be either single-line or multi-line comment,
+            depending on what comes first: "//" or "/*"
+             */
+            else
             {
                 return (indexOfLineComment < indexOfMultiLineCommentStart) ?
                         commentStartType.SINGLE_LINE :
