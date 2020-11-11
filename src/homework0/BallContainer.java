@@ -39,7 +39,7 @@ public class BallContainer {
 	 * 		   false otherwise.
 	 */
 	public boolean add(Ball ball) {
-		if((!ballList.contains(ball)) &&
+		if((ball != null && (!ballList.contains(ball))) &&
 				(volume + ball.getVolume() <= containerSize))
 		{
 			ballList.add(ball);
@@ -59,6 +59,10 @@ public class BallContainer {
 	 */
 	public boolean remove(Ball ball) {
 		// remove(Object o) returns true if the object exists in the list
+		if(ball == null)
+		{
+			return false;
+		}
 		boolean removed = ballList.remove(ball);
 		if(removed)
 		{

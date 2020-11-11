@@ -37,7 +37,7 @@ public class BallContainer2 {
      * 		   false otherwise.
      */
     public boolean add(Ball ball) {
-        if((ballList.contains(ball)))
+        if((ball == null) || (ballList.contains(ball)))
         {
             return false;
         }
@@ -66,6 +66,10 @@ public class BallContainer2 {
      */
     public boolean remove(Ball ball) {
         // remove(Object o) returns true if the object exists in the list
+        if(ball == null)
+        {
+            return false;
+        }
         boolean removed = ballList.remove(ball);
         if(removed)
         {
