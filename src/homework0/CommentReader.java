@@ -11,12 +11,12 @@ public class CommentReader
 {
     private enum commentStartType
     {NONE, SINGLE_LINE, MULTI_LINE}
-    //change all static finals to caps + underscore
-    private static final String lineComment = "//";
-    private static final String multiLineCommentStart = "/*";
-    private static final String multiLineCommentEnd = "*/";
-    private static final int notExists = -1;
-    private static final int lengthOfCommentDelimiter = 2;
+
+    private static final String LINE_COMMENT = "//";
+    private static final String MULTI_LINE_COMMENT_START = "/*";
+    private static final String MULTI_LINE_COMMENT_END = "*/";
+    private static final int NOT_EXISTS = -1;
+    private static final int LENGTH_OF_COMMENT_DELIMITER = 2;
 
     public static void main(String[] args) throws IOException //check this
     // throws
@@ -50,27 +50,27 @@ public class CommentReader
 
                 if (lineType(currentLine) == commentStartType.SINGLE_LINE)
                 {
-                    indexOfLineComment = currentLine.indexOf(lineComment);
+                    indexOfLineComment = currentLine.indexOf(LINE_COMMENT);
                     System.out.println(currentLine.substring(
-                            indexOfLineComment + lengthOfCommentDelimiter));
+                            indexOfLineComment + LENGTH_OF_COMMENT_DELIMITER));
                     continue;
                 }
 
                 if (lineType(currentLine) == commentStartType.MULTI_LINE)
                 {
                     indexOfMultiLineCommentStart =
-                            currentLine.indexOf(multiLineCommentStart);
+                            currentLine.indexOf(MULTI_LINE_COMMENT_START);
                     indexOfMultiLineCommentEnd =
-                            currentLine.indexOf(multiLineCommentEnd);
+                            currentLine.indexOf(MULTI_LINE_COMMENT_END);
 
                     //check if multi-line comment begins and ends on same line
-                    if ((indexOfMultiLineCommentEnd > notExists) &&
+                    if ((indexOfMultiLineCommentEnd > NOT_EXISTS) &&
                             (indexOfMultiLineCommentStart <
                                     indexOfMultiLineCommentEnd))
                     {
                         System.out.println(currentLine.substring(
                                 indexOfMultiLineCommentStart +
-                                        lengthOfCommentDelimiter,
+                                        LENGTH_OF_COMMENT_DELIMITER,
                                 indexOfMultiLineCommentEnd));
                     }
 
@@ -78,15 +78,15 @@ public class CommentReader
                     {
                         System.out.println(currentLine.substring(
                                 indexOfMultiLineCommentStart +
-                                        lengthOfCommentDelimiter));
+                                        LENGTH_OF_COMMENT_DELIMITER));
 
                         while (((currentLine = in.readLine()) != null) &&
-                                (!currentLine.contains(multiLineCommentEnd)))
+                                (!currentLine.contains(MULTI_LINE_COMMENT_END)))
                         {
                             System.out.println(currentLine);
                         }
                         System.out.println(currentLine.substring(0,
-                                currentLine.indexOf(multiLineCommentEnd)));
+                                currentLine.indexOf(MULTI_LINE_COMMENT_END)));
                     }
                 }
             }
@@ -97,12 +97,12 @@ public class CommentReader
     //Returns NONE, SINGLE_LINE, MULTI_LINE.
     private static commentStartType lineType(String line)
     {
-        int indexOfLineComment = line.indexOf(lineComment);
+        int indexOfLineComment = line.indexOf(LINE_COMMENT);
         int indexOfMultiLineCommentStart =
-                line.indexOf(multiLineCommentStart);
-        if (indexOfLineComment == notExists) //not a single line comment
+                line.indexOf(MULTI_LINE_COMMENT_START);
+        if (indexOfLineComment == NOT_EXISTS) //not a single line comment
         {
-            if (indexOfMultiLineCommentStart == notExists) //not a comment at all
+            if (indexOfMultiLineCommentStart == NOT_EXISTS) //not a comment at all
             {
                 return commentStartType.NONE;
             }
@@ -114,7 +114,7 @@ public class CommentReader
         else    //line contains "//"
         {
             //not a multi-line comment
-            if (indexOfMultiLineCommentStart == notExists)
+            if (indexOfMultiLineCommentStart == NOT_EXISTS)
             {
                 return commentStartType.SINGLE_LINE;
             }
