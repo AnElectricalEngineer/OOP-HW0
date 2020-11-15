@@ -16,7 +16,7 @@ public class BallContainer2
     private static final int EMPTY = 0;
 
     private final double containerSize; //volume of container itself
-    private int size;    //the number of Balls in the container
+    private int size;   //the number of Balls in the container
     private List<Ball> ballList;
 
     /**
@@ -72,7 +72,7 @@ public class BallContainer2
      */
     public boolean remove(Ball ball)
     {
-        // remove(Object o) returns true if the object exists in the list
+        //  remove(Object o) returns true if the object exists in the list
         if (ball == null)
         {
             return false;

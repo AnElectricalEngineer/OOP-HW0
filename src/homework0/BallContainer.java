@@ -16,8 +16,8 @@ public class BallContainer
     private static final int EMPTY = 0;
 
     private double volume;    //total volume of all Balls in container
-    private final double containerSize; //volume of container itself
-    private int size;    //the number of Balls in the container
+    private final double containerSize;	//volume of container itself
+    private int size;	//the number of Balls in the container
     private List<Ball> ballList;
 
 
@@ -30,7 +30,7 @@ public class BallContainer
         this.volume = EMPTY;
         this.containerSize = containerSize;
         this.size = EMPTY;
-        ballList = new ArrayList<>(); //default size is 10
+        ballList = new ArrayList<>();	//default size is 10
     }
 
 
@@ -66,7 +66,7 @@ public class BallContainer
      */
     public boolean remove(Ball ball)
     {
-        // remove(Object o) returns true if the object exists in the list
+        //	remove(Object o) returns true if the object exists in the list
         if (ball == null)
         {
             return false;

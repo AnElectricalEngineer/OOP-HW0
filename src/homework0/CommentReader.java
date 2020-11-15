@@ -2,7 +2,7 @@ package homework0;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.IOException; //maybe unnecessary - check main - throws
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -25,13 +25,11 @@ public class CommentReader
     private static final int NOT_EXISTS = -1;
     private static final int LENGTH_OF_COMMENT_DELIMITER = 2;
 
-    public static void main(String[] args) throws IOException //check this
-    // throws
+    public static void main(String[] args) throws IOException
     {
-        if (args.length != 1)    //checks for correct number of input arguments
+        if (args.length != 1)   //checks for correct number of input arguments
         {
             System.out.println("Error! Incorrect number of parameters.");
-            //add this later with exception maybe
         }
         else
         {
@@ -50,10 +48,10 @@ public class CommentReader
 
             while ((currentLine = in.readLine()) != null)
             {
-                /*  Checks type of line: single line comment, multi-line comment
-                    beginning, or neither.
-                */
-
+                /*
+                Checks type of line: single line comment, multi-line comment
+                beginning, or neither.
+                 */
                 if (lineType(currentLine) == commentStartType.SINGLE_LINE)
                 {
                     indexOfLineComment = currentLine.indexOf(LINE_COMMENT);
@@ -61,7 +59,6 @@ public class CommentReader
                             indexOfLineComment + LENGTH_OF_COMMENT_DELIMITER));
                     continue;
                 }
-
                 if (lineType(currentLine) == commentStartType.MULTI_LINE)
                 {
                     indexOfMultiLineCommentStart =
@@ -79,7 +76,6 @@ public class CommentReader
                                         LENGTH_OF_COMMENT_DELIMITER,
                                 indexOfMultiLineCommentEnd));
                     }
-
                     else
                     {
                         //print from /* to end of first line
@@ -93,7 +89,6 @@ public class CommentReader
                         {
                             System.out.println(currentLine);
                         }
-
                         //print last line until */
                         System.out.println(currentLine.substring(0,
                                 currentLine.indexOf(MULTI_LINE_COMMENT_END)));
@@ -118,10 +113,12 @@ public class CommentReader
         int indexOfLineComment = line.indexOf(LINE_COMMENT);
         int indexOfMultiLineCommentStart =
                 line.indexOf(MULTI_LINE_COMMENT_START);
-        if (indexOfLineComment == NOT_EXISTS) //not a single line comment
+        if (indexOfLineComment == NOT_EXISTS)   //not a single line comment
         {
-            if (indexOfMultiLineCommentStart == NOT_EXISTS) //not a comment
-            // at all
+            /*
+            Not a comment at all
+             */
+            if (indexOfMultiLineCommentStart == NOT_EXISTS)
             {
                 return commentStartType.NONE;
             }

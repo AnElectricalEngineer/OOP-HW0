@@ -1,4 +1,4 @@
-public class test1inCommentReader
+public class Test1inCommentReader
 {   
     public static void main(String[] args)
     {
