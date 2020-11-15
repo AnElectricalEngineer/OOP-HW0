@@ -10,27 +10,24 @@ import java.util.List;
  */
 
 //BallContainer for Part A
-public class BallContainer
+public class BallContainer2
 {
 
     private static final int EMPTY = 0;
 
-    private double volume;    //total volume of all Balls in container
-    private final double containerSize;	//volume of container itself
-    private int size;	//the number of Balls in the container
+    private final double containerSize; //volume of container itself
+    private int size;   //the number of Balls in the container
     private List<Ball> ballList;
-
 
     /**
      * @requires containerSize > 0
      * @effects Creates a new BallContainer with the size of containerSize.
      */
-    public BallContainer(double containerSize)
+    public BallContainer2(double containerSize)
     {
-        this.volume = EMPTY;
         this.containerSize = containerSize;
         this.size = EMPTY;
-        ballList = new ArrayList<>();	//default size is 10
+        ballList = new ArrayList<>(); //default size is 10
     }
 
 
@@ -46,11 +43,20 @@ public class BallContainer
      */
     public boolean add(Ball ball)
     {
-        if ((ball != null && (!ballList.contains(ball))) &&
-                (volume + ball.getVolume() <= containerSize))
+        if ((ball == null) || (ballList.contains(ball)))
+        {
+            return false;
+        }
+
+        double volume = 0;
+        for (Ball i : ballList)
+        {
+            volume += i.getVolume();
+        }
+
+        if (ball.getVolume() + volume <= containerSize)
         {
             ballList.add(ball);
-            volume += ball.getVolume();
             size += 1;
             return true;
         }
@@ -66,7 +72,7 @@ public class BallContainer
      */
     public boolean remove(Ball ball)
     {
-        //	remove(Object o) returns true if the object exists in the list
+        //  remove(Object o) returns true if the object exists in the list
         if (ball == null)
         {
             return false;
@@ -74,7 +80,6 @@ public class BallContainer
         boolean removed = ballList.remove(ball);
         if (removed)
         {
-            volume -= ball.getVolume();
             size -= 1;
         }
         return removed;
@@ -87,6 +92,11 @@ public class BallContainer
      */
     public double getVolume()
     {
+        double volume = 0;
+        for (Ball i : ballList)
+        {
+            volume += i.getVolume();
+        }
         return volume;
     }
 
@@ -115,7 +125,6 @@ public class BallContainer
     public void clear()
     {
         ballList.clear();
-        volume = EMPTY;
         size = EMPTY;
     }
 
